@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RestaurantsFragment">
+
+   <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+       android:id="@+id/swipeRefresh"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/mainLayout"
+       android:layout_marginTop="12dp">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+      android:id="@+id/rangeLayout">
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/rangeTitleTV"
+       android:textSize="16sp"
+       android:textStyle="bold"
+       android:textColor="@color/black"
+       android:text="Radius Selector"
+       android:layout_alignParentStart="true"
+       android:layout_marginStart="12dp"
+       android:layout_marginBottom="4dp"
+       android:layout_alignParentLeft="true"
+       android:layout_marginLeft="12dp"
+       android:layout_toStartOf="@+id/rangeSelectedTV"
+       android:layout_toLeftOf="@+id/rangeSelectedTV" />
+
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/rangeSelectedTV"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          android:textColor="@color/black"
+          android:text="100 M"
+          android:layout_alignParentEnd="true"
+          android:layout_marginEnd="12dp"
+          android:layout_marginBottom="4dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="12dp" />
+
+
+      <com.jaygoo.widget.RangeSeekBar
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingStart="12dp"
+          android:paddingEnd="12dp"
+          android:id="@+id/kmRangeBar"
+          app:rsb_mode="single"
+          app:rsb_indicator_background_color="@android:color/transparent"
+          app:rsb_indicator_radius="5dp"
+          app:rsb_indicator_show_mode="alwaysHide"
+          app:rsb_indicator_text_size="14sp"
+          app:rsb_indicator_text_color="@color/black"
+          app:rsb_indicator_height="20dp"
+          app:rsb_indicator_width="50dp"
+          app:rsb_indicator_margin="3dp"
+          app:rsb_gravity="center"
+          app:rsb_tick_mark_text_size="12dp"
+          app:rsb_progress_height="4dp"
+          app:rsb_progress_color="@color/colorPrimary"
+          android:layout_marginTop="8dp" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/rangeStartTV"
+          android:textSize="14sp"
+          android:textStyle="normal"
+          android:textColor="@color/black"
+          android:text="100 M"
+          android:layout_alignParentStart="true"
+          android:layout_marginStart="12dp"
+          android:layout_marginBottom="4dp"
+          android:layout_alignParentLeft="true"
+          android:layout_marginLeft="12dp"
+          android:layout_below="@+id/kmRangeBar"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/rangeEndTV"
+          android:textSize="14sp"
+          android:textStyle="normal"
+          android:textColor="@color/black"
+          android:text="5 KM"
+          android:layout_alignParentEnd="true"
+          android:layout_marginEnd="12dp"
+          android:layout_marginBottom="4dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="12dp"
+          android:layout_below="@+id/kmRangeBar"/>
+
+   </RelativeLayout>
+
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/restaurantsRV"
+       android:layout_below="@+id/rangeLayout"/>
+   </RelativeLayout>
+
+   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+   <RelativeLayout
+       android:id="@+id/loaderLayout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:clickable="true"
+       android:visibility="gone"
+       android:focusable="true">
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:alpha="0.5"
+          android:background="@color/black"/>
+
+
+      <com.airbnb.lottie.LottieAnimationView
+          android:id="@+id/loading"
+          android:layout_width="150dp"
+          android:layout_height="150dp"
+          android:layout_centerInParent="true"
+          app:lottie_autoPlay="false"
+          app:lottie_loop="true"
+          android:visibility="visible" />
+
+   </RelativeLayout>
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/errorLayout"
+       android:visibility="gone">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/errorTV"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          android:textColor="@color/black"
+          android:gravity="center"
+          android:text="No Result Found, Please change the radius"
+          android:layout_centerInParent="true" />
+
+   </RelativeLayout>
+
+</RelativeLayout>
